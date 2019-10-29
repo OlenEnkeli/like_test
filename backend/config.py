@@ -5,7 +5,7 @@ config = {
     },
     'db': {
         'host': 'localhost',
-        'db': 'finicom',
+        'db': 'liketest',
         'user': 'postgres',
         'password': '',
         'port': '5432'
