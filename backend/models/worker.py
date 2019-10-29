@@ -3,7 +3,7 @@ from enum import Enum
 from falcon import HTTPNotFound
 
 from sqlalchemy.schema import Column
-from sqlalchemy.sql.sqltypes import BigInteger, String, Boolean, Enum as EnumField
+from sqlalchemy.sql.sqltypes import BigInteger, String, Enum as EnumField
 
 from models import Base
 from libs.barcodes import calculate_checksum
@@ -24,25 +24,14 @@ class Worker(Base):
     ean13 = Column(BigInteger, unique=True, nullable=False)
     password = Column(String, nullable=False)
 
-    name = Column(String)
-    surname = Column(String)
-    middle_name = Column(String)
-
     type = Column(EnumField(WorkerType), nullable=False)
-
-    deleted = Column(Boolean(), default=False, nullable=False)
 
     @staticmethod
     def get_by_code(code):
 
         return Worker.query.filter(
-            Worker.ean13 == code,
-            Worker.deleted.is_(False)
+            Worker.ean13 == code
         ).one_or_none()
-
-    def is_password_valid(self, password):
-
-        return str(password) == str(self.password)
 
     @staticmethod
     def get_by_code_or_not_found(code):

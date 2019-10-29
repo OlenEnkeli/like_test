@@ -38,6 +38,7 @@ depends_on = None
 
 
 def upgrade():
+
     op.create_table(
         'activity_log',
         sa.Column('id', sa.BigInteger, primary_key=True, autoincrement=True),
@@ -52,4 +53,5 @@ def upgrade():
 
 
 def downgrade():
+
     op.drop_table('worker')

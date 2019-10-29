@@ -24,11 +24,7 @@ def upgrade():
         sa.Column('id', sa.BigInteger, primary_key=True, autoincrement=True),
         sa.Column('ean13', sa.BigInteger, unique=True, nullable=False),
         sa.Column('password', sa.String, nullable=False),
-        sa.Column('name', sa.String),
-        sa.Column('surname', sa.String),
-        sa.Column('middle_name', sa.String),
-        sa.Column('type', ENUM(WorkerType, name="worker_type"), nullable=False),
-        sa.Column('deleted', sa.Boolean, default=False, nullable=False)
+        sa.Column('type', ENUM(WorkerType, name="worker_type"), nullable=False)
     )
 
 
