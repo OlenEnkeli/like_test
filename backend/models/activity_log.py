@@ -26,17 +26,16 @@ class ActivityStatus(Enum):
 
 class ActivityLog(Base):
 
-    __tablename__ = "activity_log"
+    __tablename__ = 'activity_log'
 
     id = Column(BigInteger, primary_key=True, autoincrement=True)
 
     box_code = Column(BigInteger)
     worker_id = Column(BigInteger, ForeignKey('worker.id'))
-    worker = relation("Worker")
+    worker = relation('Worker')
     payload = Column(BigInteger)
     type = Column(EnumField(ActivityType))
     status = Column(EnumField(ActivityStatus))
 
     local_time = Column(DateTime)
     server_time = Column(DateTime, default=datetime.now)
-
