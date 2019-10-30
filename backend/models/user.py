@@ -45,4 +45,3 @@ class User(Base):
             return self.worker
         else:
             return None
-

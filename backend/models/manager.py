@@ -9,6 +9,7 @@ class Manager(Base):
     __tablename__ = 'manager'
 
     id = Column(BigInteger, primary_key=True, autoincrement=True)
+    login = Column(String, nullable=False)
     password = Column(String, nullable=False)
 
     def set_password(self, password):

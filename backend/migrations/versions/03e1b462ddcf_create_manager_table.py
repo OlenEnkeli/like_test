@@ -22,6 +22,7 @@ def upgrade():
     op.create_table(
         'manager',
         sa.Column('id', sa.BigInteger, primary_key=True, autoincrement=True),
+        sa.Column('login', sa.String, nullable=False),
         sa.Column('password', sa.String, nullable=False)
     )
 
