@@ -11,9 +11,3 @@ class Manager(Base):
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     login = Column(String, nullable=False)
     password = Column(String, nullable=False)
-
-    def set_password(self, password):
-        pass
-
-    def check_password(self, password):
-        pass

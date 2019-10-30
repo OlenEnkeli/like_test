@@ -4,9 +4,9 @@ import falcon
 
 from models.user import User
 from models.manager import Manager
-from libs.auth import make_session
+from libs.auth import make_session, auth_required
 from libs.schema import with_body_params
-from schemas.user import ManagerLoginSchema
+from schemas.user import ManagerLoginSchema, UserPublicSchema
 from config import config
 
 
@@ -49,3 +49,11 @@ class WorkerLoginController(object):
     def on_post(self, req, resp):
 
         raise falcon.HTTPNotFound(description='Not implemented')
+
+
+class CurrentUserController(object):
+
+    @falcon.before(auth_required)
+    def on_get(self, req, resp):
+
+        resp.body = UserPublicSchema().dumps(self.user)

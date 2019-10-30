@@ -31,6 +31,7 @@ def make_user(type, name, surname, middle_name, password=None, worker_type=None,
             return None
 
         user = User()
+        user.type = UserType.MANAGER
         user.name = name
         user.surname = surname
         user.middle_name = middle_name
@@ -55,6 +56,7 @@ def make_user(type, name, surname, middle_name, password=None, worker_type=None,
             return None
 
         user = User()
+        user.type = UserType.WORKER
         user.name = name
         user.surname = surname
         user.middle_name = middle_name
