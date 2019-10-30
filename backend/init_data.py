@@ -168,6 +168,16 @@ class ActivityGenerator:
 
         while current_dt < dt.datetime.combine(ended_at, self.workday_end):
 
+            if (current_dt + self.box_collect_time_max).time() > self.workday_end:
+                current_dt = dt.datetime.combine(
+                    current_dt.date() + dt.timedelta(days=1), self.workday_start
+                )
+
+            if current_dt.weekday() == 5:
+                current_dt = dt.datetime.combine(
+                    current_dt.date() + dt.timedelta(days=2), self.workday_start
+                )
+
             times = []
 
             for collector in self.collectors:
@@ -175,7 +185,7 @@ class ActivityGenerator:
                 box_last_id += 1
 
             current_dt += max(times)
-  
+
 
 print('Creating users ...')
 
