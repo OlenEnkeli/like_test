@@ -1,7 +1,6 @@
 from marshmallow import Schema, fields
 
 
-
 class ManagerLoginSchema(Schema):
 
     login = fields.String(required=True)
@@ -9,7 +8,11 @@ class ManagerLoginSchema(Schema):
 
 
 class WorkerSchema(Schema):
-    pass
+
+    id = fields.Integer()
+
+    ean13 = fields.String()
+    type = fields.Function(lambda obj: obj.type.name.swapcase())
 
 
 class ManagerSchema(Schema):
@@ -33,3 +36,14 @@ class UserPublicSchema(Schema):
 
     manager = fields.Nested(ManagerSchema)
     worker = fields.Nested(WorkerSchema)
+
+
+class WorkerExtendedSchema(Schema):
+
+    id = fields.Integer()
+
+    ean13 = fields.String()
+
+    name = fields.String()
+    middle_name = fields.String()
+    surname = fields.String()

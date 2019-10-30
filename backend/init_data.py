@@ -12,10 +12,10 @@ from config import config
 
 
 ACITIVITY_START_DATE = dt.date(year=2018, month=1, day=1)
-ACITIVITY_END_DATE = dt.date(year=2018, month=2, day=1)
+ACITIVITY_END_DATE = dt.date(year=2018, month=1, day=10)
 WORKDAY_START_TIME = dt.time(hour=8)
 WORKDAY_END_TIME = dt.time(hour=19, minute=30)
-BOX_COLLECT_TIME_MIN = dt.timedelta(minutes=40)
+BOX_COLLECT_TIME_MIN = dt.timedelta(minutes=20)
 BOX_COLLECT_TIME_MAX = dt.timedelta(hours=1, minutes=10)
 BOX_REVIEW_TIME_MIN = dt.timedelta(minutes=5)
 BOX_REVIEW_TIME_MAX = dt.timedelta(minutes=7)
