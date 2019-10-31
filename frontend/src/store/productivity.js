@@ -13,8 +13,8 @@ export default {
   mutations: {
     setWorkers (state, workers) {
       let result = []
-
       let productivities = {}
+
       state.workers_chart = {
         columns: ['time'],
         rows: []

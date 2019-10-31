@@ -15,7 +15,7 @@
           </template>
           <b-dropdown-item disabled class='manager-label' href="#">Менеджер</b-dropdown-item>
           <b-dropdown-item disabled href="#">Профиль</b-dropdown-item>
-          <b-dropdown-item href="#">Выйти</b-dropdown-item>
+          <b-dropdown-item @click="logout" href="#">Выйти</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
 
@@ -33,6 +33,13 @@ export default {
       } else {
         return ''
       }
+    }
+  },
+
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
+      this.$router.push('login')
     }
   }
 }
