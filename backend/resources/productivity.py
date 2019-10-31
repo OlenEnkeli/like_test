@@ -11,7 +11,9 @@ from models.user import User, UserType
 from models.manager import Manager
 from models.worker import Worker, WorkerType
 from models.activity_log import ActivityLog, ActivityType
-from schemas.productivity import ProductivityPublicSchema, ProductivitySchema
+from schemas.productivity import (
+    ProductivityPublicSchema, ProductivitySchema, WorkdayPublicSchema
+)
 
 
 class ProductivityController(object):
@@ -85,3 +87,22 @@ class ProductivityController(object):
             result.append(values)
 
         resp.body = ProductivityPublicSchema(many=True).dumps(result)
+
+
+class WorkDateController(object):
+
+    @falcon.before(manager_required)
+    def on_get(self, req, resp):
+
+        dates = (
+            self.db_session
+            .query(
+                functions.min(ActivityLog.local_time),
+                functions.max(ActivityLog.local_time),
+            ).all()
+        )
+
+        resp.body = WorkdayPublicSchema().dumps({
+            'min_date': dates[0][0],
+            'max_date': dates[0][1],
+        })

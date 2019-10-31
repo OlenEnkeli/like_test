@@ -1,6 +1,6 @@
 <template>
   <b-container class="date">
-    <Datepicker class="date__picker" v-model="pickedDate" @input="pickDate" :language="ru" placeholder="Выберите дату"/>
+    <Datepicker class="date__picker" v-model="pickedDate" :disabled-dates="workdates" @input="pickDate"  :language="ru" placeholder="Выберите дату"/>
   </b-container>
 </template>
 
@@ -31,7 +31,18 @@ export default {
     }
   },
 
+  computed: {
+    workdates () {
+      if (this.$store.state.productivity.workdates) {
+        return this.$store.state.productivity.workdates
+      } else {
+        return undefined
+      }
+    }
+  },
+
   async created () {
+    await this.$store.dispatch('getWorkdates')
     this.pickDate()
   }
 }

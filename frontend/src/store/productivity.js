@@ -1,9 +1,12 @@
+import moment from 'moment'
+
 import productivityAPI from '@/api/productivity'
 
 export default {
 
   state: {
-    workers: []
+    workers: [],
+    workdates: undefined
   },
 
   mutations: {
@@ -21,6 +24,13 @@ export default {
       })
 
       state.workers = result
+    },
+
+    setWorkdates (state, workdates) {
+      state.workdates = {
+        to: moment(workdates.min_date).toDate(),
+        from: moment(workdates.max_date).toDate()
+      }
     }
   },
 
@@ -29,6 +39,13 @@ export default {
       const workers = await productivityAPI.productivity(date)
       if (workers !== 404) {
         commit('setWorkers', workers)
+      }
+    },
+
+    async getWorkdates ({ commit }) {
+      const workdates = await productivityAPI.workdates()
+      if (workdates !== 404) {
+        commit('setWorkdates', workdates)
       }
     }
   }

@@ -8,5 +8,14 @@ export default {
     } catch (error) {
       return error.response.status
     }
+  },
+
+  async workdates () {
+    try {
+      const workdates = await axios.get('/workdate')
+      return workdates.data
+    } catch (error) {
+      return error.response.status
+    }
   }
 }
