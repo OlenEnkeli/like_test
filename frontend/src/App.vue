@@ -1,8 +1,11 @@
 <template>
-  <b-container id="app">
+  <div id="app">
     <router-view/>
-  </b-container>
+  </div>
 </template>
 
 <style lang="scss">
+.app {
+  height: 100%;
+}
 </style>

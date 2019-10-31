@@ -12,10 +12,12 @@ Redis = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 def get_user(user_session):
 
-    user_id = int(Redis.get(user_session))
+    user_id = Redis.get(user_session)
 
     if not user_id:
         raise falcon.HTTPUnauthorized()
+
+    user_id = int(user_id)
 
     return (
         User.query.filter(User.id == user_id).one_or_none()
