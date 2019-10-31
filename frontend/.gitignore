@@ -6,7 +6,7 @@ node_modules
 .env.local
 .env.*.local
 
-package-local.json
+package-lock.json
 
 # Log files
 npm-debug.log*
