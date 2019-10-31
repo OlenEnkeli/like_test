@@ -5,6 +5,9 @@ import './plugins/bootstrap-vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VeLine from 'v-charts/lib/line.common'
+
+Vue.component(VeLine.name, VeLine)
 
 Vue.config.productionTip = false
 

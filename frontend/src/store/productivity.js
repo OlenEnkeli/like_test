@@ -6,6 +6,7 @@ export default {
 
   state: {
     workers: [],
+    workers_chart: {},
     workdates: undefined
   },
 
@@ -13,15 +14,38 @@ export default {
     setWorkers (state, workers) {
       let result = []
 
+      let productivities = {}
+      state.workers_chart = {
+        columns: ['time'],
+        rows: []
+      }
+
       workers.forEach(worker => {
+        let name = `${worker.worker.name} ${worker.worker.surname}`
+
+        state.workers_chart.columns.push(name)
+
         for (let key in worker.productivity) {
+          if (!(key in productivities)) {
+            productivities[key] = {}
+          }
+
+          productivities[key][name] = worker.productivity[key]
+
           result.push({
-            worker: `${worker.worker.name} ${worker.worker.surname}`,
-            hour: key,
+            worker: name,
+            hour: parseInt(key),
             payload: worker.productivity[key] / 1000
           })
         }
       })
+
+      for (let key in productivities) {
+        state.workers_chart.rows.push({
+          time: key,
+          ...productivities[key]
+        })
+      }
 
       state.workers = result
     },

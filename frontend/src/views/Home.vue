@@ -2,6 +2,7 @@
   <b-container class="home" fluid>
     <Navbar/>
     <DatePicker/>
+    <ProductivityChart/>
     <ProductivityTable/>
   </b-container>
 </template>
@@ -10,6 +11,7 @@
 import Navbar from '@/components/Navbar'
 import DatePicker from '@/components/DatePicker'
 import ProductivityTable from '@/components/ProductivityTable'
+import ProductivityChart from '@/components/ProductivityChart'
 
 export default {
   name: 'home',
@@ -17,7 +19,8 @@ export default {
   components: {
     Navbar,
     DatePicker,
-    ProductivityTable
+    ProductivityTable,
+    ProductivityChart
   },
 
   async created () {
