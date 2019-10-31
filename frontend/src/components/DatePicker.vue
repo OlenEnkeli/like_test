@@ -17,7 +17,7 @@ export default {
 
   data () {
     return {
-      pickedDate: new Date(2018, 0, 2),
+      pickedDate: undefined,
 
       en: en,
       ru: ru
@@ -43,6 +43,7 @@ export default {
 
   async created () {
     await this.$store.dispatch('getWorkdates')
+    this.pickedDate = this.$store.state.productivity.workdates.from
     this.pickDate()
   }
 }
