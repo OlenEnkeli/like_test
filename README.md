@@ -65,3 +65,24 @@ server {
     }
 }
 ```
+
+## Описание API
+
+[GET] /api/ - API Healthcheck
+
+[POST] /login/manager - Вход менеджера
+
+```json
+{
+    "login": "ivan666",
+    "password: "qwerty"
+}
+```
+
+[GET] /users/current - Получение текущего пользователя
+
+[GET] /logout - Выход
+
+[GET] /productivity?date=2018-01-01 - Получение выборки продуктивности за определенную дату (основной ресурс)
+
+[GET] /workdate - Получение первого и последнего дня проведения работ
