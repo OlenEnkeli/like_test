@@ -34,6 +34,14 @@ export default {
     }
   },
 
+  async created () {
+    await this.$store.dispatch('getCurrentUser')
+
+    if (this.$store.state.user.current) {
+      this.$router.push({ name: 'home' })
+    }
+  },
+
   methods: {
     async login (evt) {
       evt.preventDefault()

@@ -1,12 +1,24 @@
 <template>
-  <div>
-    <h1>Hello here</h1>
-  </div>
+  <b-container class="home" fluid>
+    <Navbar/>
+    <DatePicker/>
+    <ProductivityTable/>
+  </b-container>
 </template>
 
 <script>
+import Navbar from '@/components/Navbar'
+import DatePicker from '@/components/DatePicker'
+import ProductivityTable from '@/components/ProductivityTable'
+
 export default {
   name: 'home',
+
+  components: {
+    Navbar,
+    DatePicker,
+    ProductivityTable
+  },
 
   async created () {
     await this.$store.dispatch('getCurrentUser')
@@ -17,3 +29,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .home {
+    padding: 0;
+  }
+</style>

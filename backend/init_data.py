@@ -23,7 +23,8 @@ BOX_PAYLOAD_MIN = 10000
 BOX_PAYLOAD_MAX = 14000
 
 
-def make_user(type, name, surname, middle_name, password=None, worker_type=None, login=None, ean13=None):
+def make_user(
+        type, name, surname, middle_name, password=None, worker_type=None, login=None, ean13=None):
 
     if type == UserType.MANAGER:
 
