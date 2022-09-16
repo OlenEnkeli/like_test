@@ -1,7 +1,7 @@
 alembic==1.2.1
 falcon==2.0.0
 gunicorn==19.9.0
-Mako==1.1.0
+Mako==1.2.2
 MarkupSafe==1.1.1
 marshmallow==3.2.1
 psycopg2-binary==2.8.4
